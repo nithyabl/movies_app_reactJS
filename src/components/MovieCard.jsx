@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MovieCard = ({ movie:
-  { title, vote_average, poster_path, release_date, original_language }
+  { id, title, vote_average, poster_path, release_date, original_language }
 }) => {
   return (
-    <div className="movie-card">
+    <Link to={`/movie/${id}`} className="movie-card block hover:scale-[1.02] transition-transform duration-300">
       <img
         src={poster_path ?
           `https://image.tmdb.org/t/p/w500/${poster_path}` : '/no-movie.png'}
@@ -16,7 +17,7 @@ const MovieCard = ({ movie:
 
         <div className="content">
           <div className="rating">
-            <img src="star.svg" alt="Star Icon" />
+            <img src="/star.svg" alt="Star Icon" />
             <p>{vote_average ? vote_average.toFixed(1) : 'N/A'}</p>
           </div>
 
@@ -29,7 +30,7 @@ const MovieCard = ({ movie:
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 export default MovieCard
